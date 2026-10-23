@@ -3,12 +3,13 @@ import { services, pings } from "@/db/schema";
 import { desc, eq, gte, and } from "drizzle-orm";
 import { RealtimeWrapper } from "@/components/dashboard/realtime-wrapper";
 import { ServiceRegistrationDialog } from "@/components/dashboard/service-registration-dialog";
+import { ThemeToggle } from "@/components/dashboard/theme-toggle";
 
-export const instant = false;
+export const dynamic = "force-dynamic";
 
 export default async function DashboardPage() {
   const allServices = await db.select().from(services).orderBy(desc(services.createdAt));
-  // eslint-disable-next-line
+  
   const oneDayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
 
   const servicesWithMetrics = await Promise.all(
@@ -60,7 +61,11 @@ export default async function DashboardPage() {
               Real-time infrastructure monitoring and alert suppression.
             </p>
           </div>
-          <ServiceRegistrationDialog />
+
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+            <ServiceRegistrationDialog />
+          </div>
         </header>
 
         <RealtimeWrapper initialServices={servicesWithMetrics} />

@@ -23,6 +23,11 @@ export function RealtimeWrapper({ initialServices }: { initialServices: ServiceD
   const [services, setServices] = useState<ServiceData[]>(initialServices);
   const [searchTerm, setSearchTerm] = useState("");
 
+  // Synchronize state when server revalidates and passes fresh initial props
+  useEffect(() => {
+    setServices(initialServices);
+  }, [initialServices]);
+
   useEffect(() => {
     // 1. Listen to real-time pings updates
     const pingsChannel = supabase
