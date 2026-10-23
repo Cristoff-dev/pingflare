@@ -48,7 +48,13 @@ export function UptimeChart({ data }: UptimeChartProps) {
               return null;
             }}
           />
-          <Bar dataKey="responseTimeMs" radius={[2, 2, 0, 0]} isAnimationActive={false}>
+          <Bar 
+            dataKey="responseTimeMs" 
+            radius={[2, 2, 0, 0]} 
+            isAnimationActive={true}
+            animationDuration={1200}
+            animationEasing="ease-out"
+          >
             {data.map((entry, index) => (
               <Cell 
                 key={`cell-${index}`} 
