@@ -5,8 +5,6 @@ import { RealtimeWrapper } from "@/components/dashboard/realtime-wrapper";
 import { ServiceRegistrationDialog } from "@/components/dashboard/service-registration-dialog";
 import { ThemeToggle } from "@/components/dashboard/theme-toggle";
 
-export const dynamic = "force-dynamic";
-
 export default async function DashboardPage() {
   const allServices = await db.select().from(services).orderBy(desc(services.createdAt));
   
