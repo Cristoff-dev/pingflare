@@ -34,7 +34,11 @@ export function DashboardSkeleton() {
               </div>
               <div className="h-16 w-full bg-neutral-100 dark:bg-neutral-900/50 rounded-t-sm mt-4 animate-pulse flex items-end gap-[2px]">
                 {[...Array(15)].map((_, j) => (
-                  <div key={j} className="flex-1 bg-neutral-200 dark:bg-neutral-800 rounded-t-sm" style={{ height: `${Math.random() * 60 + 20}%` }} />
+                  <div 
+                    key={j} 
+                    className="flex-1 bg-neutral-200 dark:bg-neutral-800 rounded-t-sm" 
+                    style={{ height: `${((j * 37) % 60) + 20}%` }} 
+                  />
                 ))}
               </div>
             </div>
