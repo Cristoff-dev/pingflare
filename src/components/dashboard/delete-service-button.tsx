@@ -4,10 +4,6 @@ import { useState } from "react";
 import { Trash2, Loader2 } from "lucide-react";
 import { deleteServiceAction } from "@/app/actions/services";
 
-interface DeleteServiceButtonProps {
-  serviceId: number;
-}
-
 export function DeleteServiceButton({ serviceId }: { serviceId: number }) {
   const [isDeleting, setIsDeleting] = useState(false);
 

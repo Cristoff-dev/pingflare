@@ -7,7 +7,6 @@ import { ServiceCard } from "./service-card";
 import { supabase } from "@/lib/supabase-client";
 import type { PingMetric } from "./uptime-chart";
 
-// Mirrors the data structure generated in page.tsx
 interface ServiceData {
   id: number;
   name: string;
@@ -22,11 +21,6 @@ interface ServiceData {
 export function RealtimeWrapper({ initialServices }: { initialServices: ServiceData[] }) {
   const [services, setServices] = useState<ServiceData[]>(initialServices);
   const [searchTerm, setSearchTerm] = useState("");
-
-  // Synchronize state when server revalidates and passes fresh initial props
-  useEffect(() => {
-    setServices(initialServices);
-  }, [initialServices]);
 
   useEffect(() => {
     // 1. Listen to real-time pings updates
@@ -106,7 +100,6 @@ export function RealtimeWrapper({ initialServices }: { initialServices: ServiceD
     };
   }, []);
 
-  // Real-time filtering by name or URL
   const filteredServices = services.filter((service) =>
     service.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     service.url.toLowerCase().includes(searchTerm.toLowerCase())
