@@ -27,7 +27,7 @@ async function checkHealth(url: string) {
       timeMs: Date.now() - start, 
       isUp: response.ok 
     };
-  } catch (error) {
+  } catch {
     return { status: 0, timeMs: Date.now() - start, isUp: false };
   }
 }

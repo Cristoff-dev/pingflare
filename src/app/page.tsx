@@ -8,7 +8,8 @@ import { ThemeToggle } from "@/components/dashboard/theme-toggle";
 export default async function DashboardPage() {
   const allServices = await db.select().from(services).orderBy(desc(services.createdAt));
   
-  const oneDayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
+// eslint-disable-next-line react-hooks/purity
+const oneDayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
 
   const servicesWithMetrics = await Promise.all(
     allServices.map(async (service) => {

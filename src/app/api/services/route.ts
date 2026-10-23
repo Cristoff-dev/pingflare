@@ -33,7 +33,7 @@ export async function POST(req: Request) {
     }).returning();
 
     return NextResponse.json(newService[0], { status: 201 });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to create service" }, { status: 500 });
   }
 }
